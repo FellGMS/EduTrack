@@ -10,23 +10,23 @@
       "materias": [
         {
           "nome": "Matemática",
-          "nota": 85
+          "nota": 100
         },
         {
           "nome": "Português",
-          "nota": 79
+          "nota": 100
         },
         {
           "nome": "História",
-          "nota": 94
+          "nota": 100
         },
         {
           "nome": "Ciências",
-          "nota": 84
+          "nota": 100
         },
         {
           "nome": "Geografia",
-          "nota": 90
+          "nota": 100
         }
       ]
     },
@@ -36,27 +36,27 @@
       "tipo": "aluno",
       "email": "gabriela@email.com",
       "senha": "123456",
-      "foto": "https://tinyurl.com/5n8p4eb2",
+      "foto": "https://shorturl.at/q8p7w",
       "materias": [
         {
           "nome": "Matemática",
-          "nota": 72
+          "nota": 60
         },
         {
           "nome": "Português",
-          "nota": 91
+          "nota": 100
         },
         {
           "nome": "História",
-          "nota": 88
+          "nota": 40
         },
         {
           "nome": "Ciências",
-          "nota": 95
+          "nota": 65
         },
         {
           "nome": "Geografia",
-          "nota": 81
+          "nota": 80
         }
       ]
     },
@@ -130,19 +130,19 @@
       "materias": [
         {
           "nome": "Matemática",
-          "nota": 80
+          "nota": 10
         },
         {
           "nome": "Português",
-          "nota": 70
+          "nota": 10
         },
         {
           "nome": "História",
-          "nota": 85
+          "nota": 15
         },
         {
           "nome": "Ciências",
-          "nota": 89
+          "nota": 19
         },
         {
           "nome": "Geografia",
@@ -246,7 +246,13 @@
       "tipo": "professor",
       "email": "fellipe@email.com",
       "senha": "123456",
-      "foto": "https://tinyurl.com/5n8p4eb2"
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática"
+        }
+      ]
+      
     },
     {
       "id": "10",
@@ -257,31 +263,167 @@
       "foto": "https://tinyurl.com/5n8p4eb2"
     },
     {
-      "id": "1738623096282",
-      "nome": "Joao Pedro",
-      "tipo": "aluno",
-      "email": "jpedro@email.com",
+      "id": "1738865789473",
+      "nome": "Tiago Reis",
+      "email": "tiagor@email.com",
       "senha": "123456",
-      "foto": "https://tinyurl.com/5n8p4eb2",
-      "materias": []
+      "tipo": "aluno",
+      "foto": "https://tinyurl.com/ff86c54u",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 0
+        },
+        {
+          "nome": "Português",
+          "nota": 0
+        },
+        {
+          "nome": "História",
+          "nota": 0
+        },
+        {
+          "nome": "Ciências",
+          "nota": 0
+        },
+        {
+          "nome": "Geografia",
+          "nota": 0
+        }
+      ]
     },
     {
-      "id": 1738759371650,
-      "nome": "Rafael Bret",
-      "tipo": "aluno",
-      "email": "rafael@email.com",
+      "id": "1738867395764",
+      "nome": "Pedro Fernandes",
+      "email": "pedrof@email.com",
       "senha": "123456",
-      "foto": "https://tinyurl.com/5n8p4eb2",
-      "materias": []
+      "tipo": "aluno",
+      "foto": "https://tinyurl.com/ff86c54u",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 90
+        },
+        {
+          "nome": "Português",
+          "nota": 80
+        },
+        {
+          "nome": "História",
+          "nota": 70
+        },
+        {
+          "nome": "Ciências",
+          "nota": 60
+        },
+        {
+          "nome": "Geografia",
+          "nota": 50
+        }
+      ]
     },
     {
-      "id": 1738761573255,
-      "nome": "Carlos Pedro",
-      "tipo": "aluno",
-      "email": "carlosp@email.com",
+      "id": "1738867567460",
+      "nome": "Chaves",
+      "email": "chaves@email.com",
       "senha": "123456",
+      "tipo": "aluno",
       "foto": "https://tinyurl.com/5n8p4eb2",
-      "materias": []
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 100
+        },
+        {
+          "nome": "Português",
+          "nota": 100
+        },
+        {
+          "nome": "Ciências",
+          "nota": 100
+        },
+        {
+          "nome": "Geografia",
+          "nota": 100
+        },
+        {
+          "nome": "História",
+          "nota": 100
+        }
+      ]
+    },
+    {
+      "id": 1738874567327,
+      "nome": "Omero Dias",
+      "email": "omero@email.com",
+      "senha": "123456",
+      "tipo": "aluno",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 0
+        },
+        {
+          "nome": "Português",
+          "nota": 0
+        },
+        {
+          "nome": "História",
+          "nota": 0
+        },
+        {
+          "nome": "Ciências",
+          "nota": 0
+        },
+        {
+          "nome": "Geografia",
+          "nota": 0
+        }
+      ]
+    },
+    {
+      "id": 1738876009430,
+      "nome": "Rosana Vieira",
+      "email": "rosana@email.com",
+      "senha": "123456",
+      "tipo": "aluno",
+      "foto": "https://shorturl.at/q8p7w",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 0
+        },
+        {
+          "nome": "História",
+          "nota": 0
+        },
+        {
+          "nome": "Geografia",
+          "nota": 0
+        },
+        {
+          "nome": "Ciências",
+          "nota": 0
+        },
+        {
+          "nome": "Português",
+          "nota": 0
+        }
+      ]
+    },
+    {
+      "id": 1738876840385,
+      "nome": "Rodrigo Paiva",
+      "email": "rodrigop@email.com",
+      "senha": "123456",
+      "tipo": "professor",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática"
+        }
+      ]
     }
   ]
 }

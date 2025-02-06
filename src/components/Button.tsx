@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 // 🔹 Botão estilizado no mesmo tamanho dos Inputs
 const Button = styled.button`
-  width: 100%;
+  
   padding: 12px;
   background-color: #2980b9;
   color: white;
@@ -12,7 +12,7 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: bold;
   transition: 0.3s;
-  margin-top: 10px;
+  margin-top: 20px;
 
   &:hover {
     background-color: #1f6692;

@@ -7,7 +7,7 @@ const IconButton = styled.button`
   font-size: 15px;
   color: #2980b9;
   transition: 0.3s;
-  padding: 5px;
+  padding: 2px;
 
   &:hover {
     color: #1f6692;

@@ -17,6 +17,14 @@ const Title = styled.h2`
   text-align: center;
 `;
 
+const Label = styled.label`
+  font-size: 14px;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-top: 10px;
+`;
+
 const ErrorMessage = styled.p`
   color: red;
   font-size: 14px;
@@ -39,15 +47,39 @@ const RadioGroup = styled.div`
   }
 `;
 
+const CheckboxGroup = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+`;
+
+// 🔹 Matérias predefinidas
+const MATERIAS_PREDEFINIDAS = ["Matemática", "Português", "História", "Ciências", "Geografia"];
+
 const CadastroUsuario: React.FC = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [foto, setFoto] = useState("https://tinyurl.com/5n8p4eb2"); // ✅ Foto padrão
   const [tipo, setTipo] = useState<"aluno" | "professor">("aluno");
+  const [materiasSelecionadas, setMateriasSelecionadas] = useState<string[]>([]);
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
 
   const handleCadastro = async () => {
+    if (!nome.trim() || !email.trim() || !senha.trim() || !foto.trim()) {
+      setErro("Todos os campos são obrigatórios!");
+      return;
+    }
+
     const usuarios = await getUsuarios();
     const emailExistente = usuarios.some((u) => u.email === email);
 
@@ -56,20 +88,38 @@ const CadastroUsuario: React.FC = () => {
       return;
     }
 
+    // 🔹 Pega o email do professor logado
+    const professorLogadoEmail = localStorage.getItem("usuarioEmail");
+    const professorLogado = usuarios.find((u) => u.email === professorLogadoEmail && u.tipo === "professor");
+
     const novoUsuario = {
-      id: Date.now(), // ✅ Corrigido para gerar um ID único
+      id: Date.now(),
       nome,
       email,
       senha,
       tipo,
-      foto: "https://tinyurl.com/5n8p4eb2", // 🔹 Imagem padrão
-      materias: tipo === "aluno" ? [] : undefined, // 🔹 Apenas alunos têm matérias
+      foto,
+      materias: materiasSelecionadas.map((nome) => ({
+        nome,
+        nota: tipo === "aluno" ? 0 : undefined, // 🔹 Alunos começam com nota 0, professores não têm notas.
+      })),
     };
 
     await adicionarUsuario(novoUsuario);
     alert("Cadastro realizado com sucesso!");
 
-    navigate(tipo === "professor" ? "/dashboard-professor" : "/dashboard-aluno");
+    // ✅ Redirecionamento correto:
+    if (tipo === "professor") {
+      navigate("/dashboard-professor"); // Se o novo usuário for um professor
+    } else {
+      navigate(professorLogado ? "/dashboard-professor" : "/dashboard-aluno"); // Se o professor cadastrou um aluno, volta para o dashboard dele
+    }
+  };
+
+  const handleMateriaChange = (materia: string) => {
+    setMateriasSelecionadas((prev) =>
+      prev.includes(materia) ? prev.filter((m) => m !== materia) : [...prev, materia]
+    );
   };
 
   return (
@@ -77,17 +127,26 @@ const CadastroUsuario: React.FC = () => {
       <Card>
         <Title>Cadastro de Usuário</Title>
 
-        {/* 🔹 Exibe um Avatar Padrão */}
+        {/* 🔹 Exibe um Avatar Dinâmico */}
         <ProfileSection>
-          <ProfileImage src="https://tinyurl.com/5n8p4eb2" alt="Imagem de Perfil" />
+          <ProfileImage src={foto} alt="Imagem de Perfil" />
           <Name>{nome || "Novo Usuário"}</Name>
         </ProfileSection>
 
+        <Label>Nome</Label>
         <Input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+
+        <Label>Email</Label>
         <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+        <Label>Senha</Label>
         <Input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
 
+        <Label>URL da Foto de Perfil</Label>
+        <Input type="text" placeholder="Cole a URL da foto" value={foto} onChange={(e) => setFoto(e.target.value)} />
+
         {/* 🔹 Seletor de Tipo de Usuário */}
+        <Label>Selecione o Tipo de Usuário</Label>
         <RadioGroup>
           <label>
             <input type="radio" name="tipo" value="aluno" checked={tipo === "aluno"} onChange={() => setTipo("aluno")} />
@@ -98,6 +157,21 @@ const CadastroUsuario: React.FC = () => {
             Professor
           </label>
         </RadioGroup>
+
+        {/* 🔹 Seleção de matérias (Agora para ambos: alunos e professores) */}
+        <Label>Selecione as Matérias</Label>
+        <CheckboxGroup>
+          {MATERIAS_PREDEFINIDAS.map((materia) => (
+            <label key={materia}>
+              <input
+                type="checkbox"
+                checked={materiasSelecionadas.includes(materia)}
+                onChange={() => handleMateriaChange(materia)}
+              />
+              {materia}
+            </label>
+          ))}
+        </CheckboxGroup>
 
         {erro && <ErrorMessage>{erro}</ErrorMessage>}
 

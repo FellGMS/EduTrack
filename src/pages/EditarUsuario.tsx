@@ -5,7 +5,7 @@ import Container from "../components/Container";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { getUsuarios, atualizarUsuario, Usuario } from "../services/api";
+import { getUsuarios, atualizarUsuario, Usuario, Materia } from "../services/api";
 
 // ✅ Componentes Globais
 import { ProfileSection, ProfileImage, Name } from "../components/ProfileSection";
@@ -24,31 +24,40 @@ const ErrorMessage = styled.p`
   text-align: center;
 `;
 
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+`;
+
+const Th = styled.th`
+  background-color: #2c3e50;
+  color: white;
+  padding: 8px;
+`;
+
+const Td = styled.td`
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+`;
+
 const EditarUsuario: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // Obtém o ID da URL
+  const { id } = useParams<{ id: string }>();
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
+  const [foto, setFoto] = useState(""); // ✅ Novo campo para a URL da foto
+  const [materias, setMaterias] = useState<Materia[]>([]);
   const [erro, setErro] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const usuarioEmail = localStorage.getItem("usuarioEmail");
-    if (!usuarioEmail) {
-      navigate("/"); // 🔹 Redireciona para login se não estiver logado
-      return;
-    }
-
     const verificarUsuario = async () => {
       const usuarios = await getUsuarios();
-      const usuarioAtual = usuarios.find((u) => u.email === usuarioEmail);
 
-      if (!usuarioAtual || usuarioAtual.tipo !== "professor") {
-        navigate("/dashboard-professor"); // 🔹 Somente Professores podem acessar essa página
-        return;
-      }
-
-      const usuarioParaEditar = usuarios.find((u) => u.id === Number(id)); // 🔹 Convertendo ID para número
+      // ✅ Garante que os IDs sejam comparados corretamente
+      const usuarioParaEditar = usuarios.find((u) => Number(u.id) === Number(id));
 
       if (!usuarioParaEditar) {
         setErro("Usuário não encontrado.");
@@ -58,22 +67,42 @@ const EditarUsuario: React.FC = () => {
       setUsuario(usuarioParaEditar);
       setNome(usuarioParaEditar.nome);
       setEmail(usuarioParaEditar.email);
+      setFoto(usuarioParaEditar.foto); // ✅ Setando a foto atual do usuário
+      setMaterias(usuarioParaEditar.materias || []);
     };
 
     verificarUsuario();
-  }, [id, navigate]);
+  }, [id]);
 
   const handleSalvar = async () => {
-    if (!nome || !email) {
+    if (!nome || !email || !foto) {
       setErro("Todos os campos são obrigatórios!");
       return;
     }
 
     if (usuario) {
-      await atualizarUsuario(usuario.id, { nome, email });
-      alert("Usuário atualizado com sucesso!");
-      navigate("/dashboard-professor");
+      console.log("Enviando atualização para API:", {
+        nome,
+        email,
+        foto, // ✅ Atualizando a foto também
+        materias,
+      });
+
+      const atualizado = await atualizarUsuario(usuario.id, { nome, email, foto, materias });
+
+      if (atualizado) {
+        alert("Usuário atualizado com sucesso!");
+        navigate("/dashboard-professor");
+      } else {
+        setErro("Erro ao atualizar usuário. Tente novamente.");
+      }
     }
+  };
+
+  const handleNotaChange = (index: number, novaNota: number) => {
+    const novasMaterias = [...materias];
+    novasMaterias[index].nota = novaNota;
+    setMaterias(novasMaterias);
   };
 
   return (
@@ -86,12 +115,38 @@ const EditarUsuario: React.FC = () => {
         ) : usuario ? (
           <>
             <ProfileSection>
-              <ProfileImage src={usuario.foto} alt="Imagem de Perfil" />
+              <ProfileImage src={foto} alt="Imagem de Perfil" />
               <Name>{nome}</Name>
             </ProfileSection>
 
             <Input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
             <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Input type="text" placeholder="URL da Foto" value={foto} onChange={(e) => setFoto(e.target.value)} /> {/* ✅ Novo campo */}
+
+            <Table>
+              <thead>
+                <tr>
+                  <Th>Disciplina</Th>
+                  <Th>Nota (%)</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {materias.map((materia, index) => (
+                  <tr key={index}>
+                    <Td>{materia.nome}</Td>
+                    <Td>
+                      <Input
+                        type="number"
+                        min="0"
+                        max="100"
+                        value={materia.nota ?? 0}
+                        onChange={(e) => handleNotaChange(index, Number(e.target.value))}
+                      />
+                    </Td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
 
             <Button onClick={handleSalvar}>Salvar Alterações</Button>
           </>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUsuarios, Usuario } from "../services/api";
+import { getUsuarios, removerUsuario, Usuario } from "../services/api";
 import Container from "../components/Container";
-import { FaEdit, FaTrash, FaUserPlus, FaBook, FaClipboardList, FaUser } from "react-icons/fa";
+import { FaEdit, FaTrash, FaUserPlus, FaClipboardList, FaUser } from "react-icons/fa";
 import Card from "../components/Card";
 
 // ✅ Componentes globais reutilizáveis
@@ -11,20 +11,23 @@ import AdminButton from "../components/AdminButton";
 import { TableWrapper, Table, Th, Td } from "../components/TableComponents";
 import { ProgressBarContainer, ProgressBar } from "../components/ProgressBar";
 import { ProfileSection, ProfileImage, Name } from "../components/ProfileSection";
-import Button from "../components/Button";
 
-// ✅ Botões de Administração
+// ✅ Estilização personalizada
 import styled from "styled-components";
 
-const AdminButtonsContainer = styled.div`
+const ProfileActions = styled.div`
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-top: 10px;
 `;
 
-const ProfileActions = styled.div`
-  margin-top: 10px;
+const ProfessorTitle = styled.h3`
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 5px;
 `;
 
 const DashboardProfessor: React.FC = () => {
@@ -53,19 +56,36 @@ const DashboardProfessor: React.FC = () => {
     fetchDados();
   }, []);
 
-  // ✅ Corrigido: Verifica se "materias" existe antes de calcular a média para evitar erro
-  const calcularMedia = (materias?: { nome: string; nota?: number }[]) => {
-    if (!materias || materias.length === 0) return 0; // Se não houver matérias, retorna 0
+  // ✅ Função para excluir usuário com confirmação
+  const handleExcluirUsuario = async (id: number, nome: string) => {
+    const confirmacao = window.confirm(`Tem certeza que deseja excluir o aluno "${nome}"?`);
+    
+    if (confirmacao) {
+      await removerUsuario(id);
+      alert(`Usuário "${nome}" removido com sucesso!`);
 
-    // 🔹 Filtra apenas matérias que possuem nota válida (ignora undefined)
+      // Atualiza a lista após a remoção
+      setAlunos(alunos.filter((aluno) => Number(aluno.id) !== id));
+    }
+  };
+
+  // ✅ Função para calcular a média de notas
+  const calcularMedia = (materias?: { nome: string; nota?: number }[]) => {
+    if (!materias || materias.length === 0) return 0;
+
     const notasValidas = materias
       .filter((materia) => materia.nota !== undefined)
       .map((materia) => materia.nota as number);
 
-    if (notasValidas.length === 0) return 0; // Se todas as notas forem undefined, retorna 0
+    if (notasValidas.length === 0) return 0;
 
     const somaNotas = notasValidas.reduce((total, nota) => total + nota, 0);
     return Math.round(somaNotas / notasValidas.length);
+  };
+
+  // ✅ Redireciona para Dashboard do Aluno com ID correto
+  const handleGerarRelatorio = (id: number) => {
+    navigate(`/dashboard-aluno/${id}`); // Agora a URL terá o ID correto
   };
 
   return (
@@ -77,31 +97,23 @@ const DashboardProfessor: React.FC = () => {
           <>
             {professor && (
               <ProfileSection>
+                <ProfessorTitle>Professor:</ProfessorTitle>
                 <ProfileImage src={professor.foto} alt="Foto de Perfil" />
                 <Name>{professor.nome}</Name>
 
-                {/* ✅ Botão "Ver Perfil" abaixo do nome com espaçamento */}
+                {/* 🔹 Botões organizados com o mesmo estilo */}
                 <ProfileActions>
-                  <Button onClick={() => navigate("/perfil-professor")}>
+                  <AdminButton onClick={() => navigate("/cadastro")}>
+                    <FaUserPlus />
+                    Adicionar Usuário
+                  </AdminButton>
+                  <AdminButton onClick={() => navigate("/perfil-professor")}>
                     <FaUser />
-                    &nbsp; Ver Perfil
-                  </Button>
+                    Ver Perfil
+                  </AdminButton>
                 </ProfileActions>
               </ProfileSection>
             )}
-
-            {/* 🔹 Botões de Administração - Apenas para Professores */}
-            <AdminButtonsContainer>
-              <AdminButton onClick={() => navigate("/cadastro")}>
-                <FaUserPlus />
-                Adicionar Usuário
-              </AdminButton>
-
-              <AdminButton onClick={() => alert("Adicionar Matéria")}>
-                <FaBook />
-                Adicionar Matéria
-              </AdminButton>
-            </AdminButtonsContainer>
 
             <TableWrapper>
               <Table>
@@ -114,24 +126,22 @@ const DashboardProfessor: React.FC = () => {
                 </thead>
                 <tbody>
                   {alunos.map((aluno) => (
-                    <tr key={aluno.id}>
+                    <tr key={String(aluno.id)}>
                       <Td>{aluno.nome}</Td>
                       <Td>
-                        {/* ✅ Garante que "materias" seja um array vazio caso seja undefined */}
                         <strong>{calcularMedia(aluno.materias || [])}%</strong>
                         <ProgressBarContainer>
                           <ProgressBar percentage={calcularMedia(aluno.materias || [])} />
                         </ProgressBarContainer>
                       </Td>
                       <Td>
-                        <IconButton title="Gerar Relatório">
+                        <IconButton title="Gerar Relatório" onClick={() => handleGerarRelatorio(Number(aluno.id))}>
                           <FaClipboardList />
                         </IconButton>
-                        {/* ✅ Agora o botão leva à tela de edição */}
-                        <IconButton title="Editar" onClick={() => navigate(`/editar-usuario/${aluno.id}`)}>
+                        <IconButton title="Editar" onClick={() => navigate(`/editar-usuario/${Number(aluno.id)}`)}>
                           <FaEdit />
                         </IconButton>
-                        <IconButton title="Excluir">
+                        <IconButton title="Excluir" onClick={() => handleExcluirUsuario(Number(aluno.id), aluno.nome)}>
                           <FaTrash />
                         </IconButton>
                       </Td>

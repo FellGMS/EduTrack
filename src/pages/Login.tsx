@@ -44,6 +44,15 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
+const Slogan = styled.p`
+  font-size: 16px;
+  color: #34495e;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+`;
+
 const ErrorMessage = styled.p`
   color: red;
   font-size: 14px;
@@ -65,7 +74,7 @@ const Login: React.FC = () => {
       return;
     }
 
-    localStorage.setItem("usuarioEmail", usuario.email); // ✅ Salva login no LocalStorage
+    localStorage.setItem("usuarioEmail", usuario.email);
     alert(`Bem-vindo, ${usuario.nome}!`);
 
     if (usuario.tipo === "professor") {
@@ -78,6 +87,10 @@ const Login: React.FC = () => {
   return (
     <Container>
       <LoginCard>
+        <Slogan>
+          🎓<strong>EduTrack: Acompanhe, evolua, conquiste. Seu desempenho em foco.</strong><br /><br />
+        </Slogan>
+        
         <Title>Entrar no EduTrack</Title>
         <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />

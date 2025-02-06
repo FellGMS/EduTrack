@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TableWrapper = styled.div`
   overflow-x: auto;
-  padding: 10px;
+  padding: 8px;
 `;
 
 export const Table = styled.table`
@@ -19,7 +19,7 @@ export const Th = styled.th`
 `;
 
 export const Td = styled.td`
-  padding: 4px;
+  padding: 3px;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
   color: #333;

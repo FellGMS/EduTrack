@@ -5,7 +5,8 @@ import Container from "../components/Container";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { adicionarMateria } from "../services/api";
+import { adicionarMateria } from "../services/api"; // ✅ Importação corrigida!
+
 
 const Title = styled.h2`
   font-size: 24px;
