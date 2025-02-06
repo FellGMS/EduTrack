@@ -1,25 +1,44 @@
-```markdown
-### 🚀 EduTrack - Sistema de Gestão Educacional
+# 📚 EduTrack – Sistema de Gestão Educacional  
 
-Bem-vindo ao **EduTrack**! 🎓📚 Um sistema educacional intuitivo que permite a **gestão de desempenho acadêmico** de alunos e professores.  
-✔️ Professores podem gerenciar alunos, editar notas e acompanhar o progresso.  
-✔️ Alunos têm acesso a um painel interativo com **notas**, **progresso** e **conquistas gamificadas**. 🏅  
-
-✅ Desenvolvido com **React + TypeScript** e um banco de dados **fake** via **JSON Server** para simular uma API.  
+O **EduTrack** é uma plataforma de gestão acadêmica que permite o acompanhamento do desempenho dos alunos e professores. O sistema oferece um ambiente interativo e gamificado, onde os alunos podem visualizar suas notas e conquistas, enquanto os professores gerenciam turmas e monitoram o progresso acadêmico.
 
 ---
 
-## 📌 Pré-requisitos
+## ⚙️ Tecnologias Utilizadas  
 
-Antes de começar, certifique-se de ter instalado:
+- **React + Vite** – Desenvolvimento do frontend  
+- **TypeScript** – Tipagem estática e segurança no código  
+- **Styled Components** – Estilização dos componentes  
+- **JSON Server** – API fake para simulação de banco de dados  
+- **Axios** – Requisições HTTP  
 
+---
+
+## 🚀 Funcionalidades  
+
+### 🔹 Para Professores:  
+✔️ Visualização e gerenciamento dos alunos cadastrados  
+✔️ Acompanhamento do desempenho médio dos alunos  
+✔️ Edição e exclusão de perfis de alunos  
+✔️ Acesso a relatórios individuais de desempenho  
+
+### 🔹 Para Alunos:  
+✔️ Acompanhamento de notas e progresso acadêmico  
+✔️ Sistema de **conquistas** baseado em desempenho  
+✔️ Interface gamificada para incentivo e aprendizado contínuo  
+
+---
+
+## 📌 Pré-requisitos  
+
+Antes de iniciar, instale as seguintes dependências no seu sistema:  
 ✅ **Node.js** (versão 16 ou superior)  
 ✅ **npm** ou **yarn**  
-✅ **Git** (para clonar o repositório)
+✅ **Git** (para clonar o repositório)  
 
 ---
 
-## 📂 Estrutura do Projeto
+## 📂 Estrutura do Projeto  
 
 ```bash
 EduTrack/
@@ -30,14 +49,14 @@ EduTrack/
 │   ├── vite.config.js # ⚙️ Configuração do Vite
 │   └── ...        
 │── db.json        # 📜 Banco de dados fake (JSON Server)
-└── README.md      # 📜 Este arquivo
+└── README.md      # 📜 Documentação do projeto
 ```
 
 ---
 
-## ⚙️ Como Executar o Projeto
+## 🔧 Como Configurar e Executar  
 
-### 1️⃣ Clone o repositório
+### 1️⃣ Clonar o repositório  
 
 ```sh
 git clone https://github.com/FellGMS/EduTrack.git
@@ -51,15 +70,15 @@ cd EduTrack/frontend
 
 ---
 
-### 2️⃣ Instale as dependências
+### 2️⃣ Instalar as dependências  
 
-Caso use **npm**:
+Usando **npm**:  
 
 ```sh
 npm install
 ```
 
-Caso use **yarn**:
+Ou com **yarn**:  
 
 ```sh
 yarn install
@@ -67,11 +86,7 @@ yarn install
 
 ---
 
-### 3️⃣ Inicie a API Fake (JSON Server)
-
-O banco de dados fake é armazenado no arquivo **db.json** e será executado via **JSON Server**.
-
-Para iniciar:
+### 3️⃣ Iniciar a API Fake (JSON Server)  
 
 ```sh
 npm run mock-api
@@ -83,13 +98,13 @@ Se estiver usando **yarn**:
 yarn mock-api
 ```
 
-📢 **A API será iniciada em:** [`http://localhost:5000`](http://localhost:5000)
+📢 **A API será iniciada em:** `http://localhost:5000`
 
 ---
 
-### 4️⃣ Inicie o Frontend (React + Vite)
+### 4️⃣ Iniciar o Frontend  
 
-Após iniciar a API fake, abra outro terminal e execute:
+Após iniciar a API, abra outro terminal e execute:  
 
 ```sh
 npm run dev
@@ -101,48 +116,33 @@ Ou com **yarn**:
 yarn dev
 ```
 
-📢 **O frontend será iniciado em:** [`http://localhost:5173`](http://localhost:5173)
+📢 **O frontend será iniciado em:** `http://localhost:5173`
 
 ---
 
-## 🎯 Acesse o Sistema
+## 🎯 Acesso ao Sistema  
 
-🔹 **Login:** [`http://localhost:5173/login`](http://localhost:5173/login)  
-🔹 **Dashboard Professor:** [`http://localhost:5173/dashboard-professor`](http://localhost:5173/dashboard-professor)  
-🔹 **Dashboard Aluno:** [`http://localhost:5173/dashboard-aluno/{id}`](http://localhost:5173/dashboard-aluno/{id}) _(substitua `{id}` pelo ID do aluno)_  
-
----
-
-## 🌟 Funcionalidades  
-
-✔️ **Login para Professores e Alunos**  
-✔️ **Dashboard do Professor** → Gerenciamento de alunos, relatórios e notas 📊  
-✔️ **Dashboard do Aluno** → Visualização de notas e conquistas 🏅  
-✔️ **Edição de Usuário** → Permite alterar nome, email e notas dos alunos  
-✔️ **Sistema de Conquistas** → Medidas motivacionais com **medalhas e badges**  
+🔹 **Login:** `http://localhost:5173/login`  
+🔹 **Dashboard Professor:** `http://localhost:5173/dashboard-professor`  
+🔹 **Dashboard Aluno:** `http://localhost:5173/dashboard-aluno/{id}`  
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+## 🛠 Contribuição  
 
-✅ **React + Vite** → Frontend moderno e performático  
-✅ **TypeScript** → Tipagem estática para segurança no código  
-✅ **Styled Components** → Estilização dinâmica e modular  
-✅ **JSON Server** → API Fake para simular persistência de dados  
-✅ **Axios** → Requisições HTTP eficientes  
+Contribuições são bem-vindas! Para colaborar:  
 
----
+1. Faça um **fork** do repositório  
+2. Crie uma **branch** para sua funcionalidade (`git checkout -b minha-feature`)  
+3. Faça o **commit** (`git commit -m "Adiciona nova funcionalidade X"`)  
+4. Faça um **push** (`git push origin minha-feature`)  
+5. Abra um **Pull Request**  
 
-## 📝 Contribuição
-
-Quer contribuir? Fork o projeto, crie uma branch e abra um PR! 🚀  
-
-👨‍💻 **Criado por:** [Felipe GMS](https://github.com/FellGMS)  
-📌 **Repositório:** [EduTrack](https://github.com/FellGMS/EduTrack)
+📌 **Criado por:** [Felipe GMS](https://github.com/FellGMS)  
+📌 **Repositório:** [EduTrack](https://github.com/FellGMS/EduTrack)  
 
 ---
 
-## 🏆 Licença
+## 🏆 Licença  
 
-📝 **MIT License** - Fique à vontade para usar e melhorar! 🚀  
-```
+📝 **MIT License** – Fique à vontade para usar e melhorar!  
