@@ -1,6 +1,13 @@
+```markdown
 ### 🚀 EduTrack - Sistema de Gestão Educacional
 
-Bem-vindo ao **EduTrack**! 🎓📚 Este é um sistema educacional desenvolvido com **React + TypeScript**, utilizando um banco de dados **fake** via **JSON Server** para simular uma API.
+Bem-vindo ao **EduTrack**! 🎓📚 Um sistema educacional intuitivo que permite a **gestão de desempenho acadêmico** de alunos e professores.  
+✔️ Professores podem gerenciar alunos, editar notas e acompanhar o progresso.  
+✔️ Alunos têm acesso a um painel interativo com **notas**, **progresso** e **conquistas gamificadas**. 🏅  
+
+✅ Desenvolvido com **React + TypeScript** e um banco de dados **fake** via **JSON Server** para simular uma API.  
+
+---
 
 ## 📌 Pré-requisitos
 
@@ -76,7 +83,7 @@ Se estiver usando **yarn**:
 yarn mock-api
 ```
 
-📢 **A API será iniciada em:** `http://localhost:5000`
+📢 **A API será iniciada em:** [`http://localhost:5000`](http://localhost:5000)
 
 ---
 
@@ -94,31 +101,41 @@ Ou com **yarn**:
 yarn dev
 ```
 
-📢 **O frontend será iniciado em:** `http://localhost:5173`
+📢 **O frontend será iniciado em:** [`http://localhost:5173`](http://localhost:5173)
 
 ---
 
 ## 🎯 Acesse o Sistema
 
-🔹 **Login:** `http://localhost:5173/login`  
-🔹 **Dashboard Professor:** `http://localhost:5173/dashboard-professor`  
-🔹 **Dashboard Aluno:** `http://localhost:5173/dashboard-aluno`
+🔹 **Login:** [`http://localhost:5173/login`](http://localhost:5173/login)  
+🔹 **Dashboard Professor:** [`http://localhost:5173/dashboard-professor`](http://localhost:5173/dashboard-professor)  
+🔹 **Dashboard Aluno:** [`http://localhost:5173/dashboard-aluno/{id}`](http://localhost:5173/dashboard-aluno/{id}) _(substitua `{id}` pelo ID do aluno)_  
+
+---
+
+## 🌟 Funcionalidades  
+
+✔️ **Login para Professores e Alunos**  
+✔️ **Dashboard do Professor** → Gerenciamento de alunos, relatórios e notas 📊  
+✔️ **Dashboard do Aluno** → Visualização de notas e conquistas 🏅  
+✔️ **Edição de Usuário** → Permite alterar nome, email e notas dos alunos  
+✔️ **Sistema de Conquistas** → Medidas motivacionais com **medalhas e badges**  
 
 ---
 
 ## 🛠 Tecnologias Utilizadas
 
-✅ **React + Vite** - Para o frontend  
-✅ **TypeScript** - Tipagem estática  
-✅ **Styled Components** - Estilização  
-✅ **JSON Server** - API fake para persistência de dados  
-✅ **Axios** - Requisições HTTP  
+✅ **React + Vite** → Frontend moderno e performático  
+✅ **TypeScript** → Tipagem estática para segurança no código  
+✅ **Styled Components** → Estilização dinâmica e modular  
+✅ **JSON Server** → API Fake para simular persistência de dados  
+✅ **Axios** → Requisições HTTP eficientes  
 
 ---
 
 ## 📝 Contribuição
 
-Quer contribuir? Fork o projeto, crie uma branch e abra um PR! 🚀
+Quer contribuir? Fork o projeto, crie uma branch e abra um PR! 🚀  
 
 👨‍💻 **Criado por:** [Felipe GMS](https://github.com/FellGMS)  
 📌 **Repositório:** [EduTrack](https://github.com/FellGMS/EduTrack)
@@ -127,6 +144,5 @@ Quer contribuir? Fork o projeto, crie uma branch e abra um PR! 🚀
 
 ## 🏆 Licença
 
-📝 MIT License - Fique à vontade para usar e melhorar!
-
----
+📝 **MIT License** - Fique à vontade para usar e melhorar! 🚀  
+```
