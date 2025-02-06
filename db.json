@@ -1,0 +1,287 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Lucas Nascimento",
+      "tipo": "aluno",
+      "email": "lucas@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 85
+        },
+        {
+          "nome": "Português",
+          "nota": 79
+        },
+        {
+          "nome": "História",
+          "nota": 94
+        },
+        {
+          "nome": "Ciências",
+          "nota": 84
+        },
+        {
+          "nome": "Geografia",
+          "nota": 90
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Gabriela Martins",
+      "tipo": "aluno",
+      "email": "gabriela@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 72
+        },
+        {
+          "nome": "Português",
+          "nota": 91
+        },
+        {
+          "nome": "História",
+          "nota": 88
+        },
+        {
+          "nome": "Ciências",
+          "nota": 95
+        },
+        {
+          "nome": "Geografia",
+          "nota": 81
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "André Oliveira",
+      "tipo": "aluno",
+      "email": "andre@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 60
+        },
+        {
+          "nome": "Português",
+          "nota": 85
+        },
+        {
+          "nome": "História",
+          "nota": 78
+        },
+        {
+          "nome": "Ciências",
+          "nota": 92
+        },
+        {
+          "nome": "Geografia",
+          "nota": 76
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Mariana Lima",
+      "tipo": "aluno",
+      "email": "mariana@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 95
+        },
+        {
+          "nome": "Português",
+          "nota": 88
+        },
+        {
+          "nome": "História",
+          "nota": 73
+        },
+        {
+          "nome": "Ciências",
+          "nota": 90
+        },
+        {
+          "nome": "Geografia",
+          "nota": 82
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Carlos Mendes",
+      "tipo": "aluno",
+      "email": "carlos@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 80
+        },
+        {
+          "nome": "Português",
+          "nota": 70
+        },
+        {
+          "nome": "História",
+          "nota": 85
+        },
+        {
+          "nome": "Ciências",
+          "nota": 89
+        },
+        {
+          "nome": "Geografia",
+          "nota": 77
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "nome": "Bruno Ferreira",
+      "tipo": "aluno",
+      "email": "bruno@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 91
+        },
+        {
+          "nome": "Português",
+          "nota": 79
+        },
+        {
+          "nome": "História",
+          "nota": 82
+        },
+        {
+          "nome": "Ciências",
+          "nota": 93
+        },
+        {
+          "nome": "Geografia",
+          "nota": 85
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "nome": "Vanessa Pereira",
+      "tipo": "aluno",
+      "email": "vanessa@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 86
+        },
+        {
+          "nome": "Português",
+          "nota": 75
+        },
+        {
+          "nome": "História",
+          "nota": 89
+        },
+        {
+          "nome": "Ciências",
+          "nota": 81
+        },
+        {
+          "nome": "Geografia",
+          "nota": 87
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "nome": "João Souza",
+      "tipo": "aluno",
+      "email": "joao@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": [
+        {
+          "nome": "Matemática",
+          "nota": 74
+        },
+        {
+          "nome": "Português",
+          "nota": 88
+        },
+        {
+          "nome": "História",
+          "nota": 91
+        },
+        {
+          "nome": "Ciências",
+          "nota": 85
+        },
+        {
+          "nome": "Geografia",
+          "nota": 80
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "nome": "Felipe",
+      "tipo": "professor",
+      "email": "fellipe@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2"
+    },
+    {
+      "id": "10",
+      "nome": "Ana Souza",
+      "tipo": "professor",
+      "email": "ana@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2"
+    },
+    {
+      "id": "1738623096282",
+      "nome": "Joao Pedro",
+      "tipo": "aluno",
+      "email": "jpedro@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": []
+    },
+    {
+      "id": 1738759371650,
+      "nome": "Rafael Bret",
+      "tipo": "aluno",
+      "email": "rafael@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": []
+    },
+    {
+      "id": 1738761573255,
+      "nome": "Carlos Pedro",
+      "tipo": "aluno",
+      "email": "carlosp@email.com",
+      "senha": "123456",
+      "foto": "https://tinyurl.com/5n8p4eb2",
+      "materias": []
+    }
+  ]
+}
